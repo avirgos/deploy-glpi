@@ -1,0 +1,36 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: glpi-mariadb
+    env_file:
+      - ./secrets.env
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    networks:
+      glpi-network:
+
+  glpi:
+    image: debian:12
+    container_name: glpi
+    ports:
+      - "443:443"
+    env_file:
+      - ./secrets.env
+    volumes:
+      - ./ssl/glpi.crt:/etc/ssl/glpi.crt
+      - ./ssl/glpi.key:/etc/ssl/glpi.key
+      - ./frontend/vhost_glpi.conf:/etc/nginx/sites-available/glpi.conf
+      - ./scripts/glpi-setup.sh:/usr/local/bin/glpi-setup.sh
+      - glpi-data:/var/www/glpi
+    networks:
+      glpi-network:
+    depends_on:
+      - mariadb
+    command: /usr/local/bin/glpi-setup.sh
+
+networks:
+  glpi-network:
+
+volumes:
+  mariadb-data:
+  glpi-data:
