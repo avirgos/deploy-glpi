@@ -1,1 +1,1 @@
-# GLPI (Gestionnaire Libre de Parc Informatique) Agent
+# GLPI Agent
