@@ -46,3 +46,11 @@ After running the script, in the `backups/` directory, you will find :
 ├── db-backup-YYYY-MM-DD.sql
 └── glpi-backup-YYYY-DD-MM
 ```
+
+## Activate the inventory
+
+When a GLPI agent is added to a device, the device will be added to GLPI automatically.
+
+To do this, go to the "**Administration**" > "**Inventory**" menu. Then tick the "**Enable inventory**" box. Click on the "**Save**" button to apply the changes :
+
+![config-5](assets/config-5.png)

@@ -2,41 +2,10 @@
 
 ## Prerequisites
 
-Commands have been executed on **Debian 12 (bookworm)**. A GNU/Linux system is required.
-
-### | Git |
-
-```
-sudo apt-get install git
-```
-
-### | Docker |
-
-```bash
-# add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-```
-
-```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-### | Docker Compose |
-
-```bash
-sudo apt-get install docker-compose
-```
+The following packages are required : 
+- ```git```
+- [```docker```](https://docs.docker.com/engine/install/)
+- [```docker-compose```](https://docs.docker.com/compose/install/linux/)
 
 ## Deployment Preparation
 
