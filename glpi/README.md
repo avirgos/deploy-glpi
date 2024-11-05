@@ -3,9 +3,9 @@
 ## Prerequisites
 
 The following packages are required : 
-- ```git```
-- [```docker```](https://docs.docker.com/engine/install/)
-- [```docker-compose```](https://docs.docker.com/compose/install/linux/)
+- `git`
+- [`docker`](https://docs.docker.com/engine/install/)
+- [`docker-compose`](https://docs.docker.com/compose/install/linux/)
 
 ## Deployment Preparation
 
