@@ -47,7 +47,7 @@ After running the script, in the `backups/` directory, you will find :
 └── glpi-backup-YYYY-DD-MM
 ```
 
-## Activate the inventory
+## Activate the inventory
 
 When a GLPI agent is added to a device, the device will be added to GLPI automatically.
 

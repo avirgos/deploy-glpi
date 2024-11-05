@@ -1,0 +1,26 @@
+- name: Install and configure the GLPI agent
+  hosts: all
+
+  vars:
+    glpi_agent_version: "1.11"
+    glpi_server_url: "https://<domain-name>"
+
+  tasks:
+    - name: Download the GLPI agent installation script
+      command: "curl -L -o /tmp/glpi-agent-{{ glpi_agent_version }}-linux-installer.pl https://github.com/glpi-project/glpi-agent/releases/download/{{ glpi_agent_version }}/glpi-agent-{{ glpi_agent_version }}-linux-installer.pl"
+
+    - name: Set execution permissions on the installation script
+      file:
+        path: "/tmp/glpi-agent-{{ glpi_agent_version }}-linux-installer.pl"
+        mode: "0755"
+
+    - name: Run the GLPI agent installation script
+      become: true
+      command: "perl /tmp/glpi-agent-{{ glpi_agent_version }}-linux-installer.pl -s {{ glpi_server_url }}/front/inventory.php --no-ssl-check --runnow --install --verbose"
+
+    - name: Start and enable the GLPI agent
+      become: true
+      systemd:
+        name: glpi-agent
+        enabled: true
+        state: started
