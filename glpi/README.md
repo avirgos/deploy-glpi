@@ -1,13 +1,32 @@
 # GLPI | Deployment Guide
 
-## Prerequisites
+## Prerequisites and comments
 
 The following packages are required : 
 - `git`
 - [`docker`](https://docs.docker.com/engine/install/)
 - [`docker-compose`](https://docs.docker.com/compose/install/linux/)
 
-## Deployment Preparation
+
+ℹ️ **Inside the `ssl` directory**, you need `glpi.crt` and `glpi.key` files to establish an HTTPS connection for GLPI. The provided files are **self-signed**. 
+
+You can generate and self-sign the SSL certificate with the following command :
+
+```bash
+openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout ./glpi.key -out ./glpi.crt -subj "/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local" 
+```
+
+Replace the relevant fields : `"/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local"`
+
+## Navigation
+
+Choose your deployment method :
+- [Manual](#manual)
+- [Automatic](#automatic)
+
+## Manual
+
+### Deployment Preparation
 
 Retrieve the necessary files for deploying GLPI cloning this repository :
 
@@ -74,19 +93,7 @@ server {
 
 **⚠️ Complete the `<domain-name>` field. ⚠️**
 
----
-
-**Inside the `ssl` directory**, you need `glpi.crt` and `glpi.key` files to establish an HTTPS connection for GLPI. The provided files are **self-signed**.
-
-You can generate and self-sign the SSL certificate with the following command :
-
-```bash
-openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout ./glpi.key -out ./glpi.crt -subj "/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local" 
-```
-
-Replace the relevant fields : `"/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local"` 
-
-## Deployment
+### Deployment
 
 To deploy GLPI, run the following script :
 
@@ -95,6 +102,59 @@ sudo ./deploy.sh
 ```
 
 Finally, access GLPI via the URL : [https://localhost](https://localhost/).
+
+## Automatic
+
+`deploy_glpi.yml` :
+
+```yml
+- name: Deploy GLPI
+  hosts: localhost
+  become: true
+
+  vars:
+    deploy_dir: /opt/deploy-glpi
+    mariadb_root_password: "<mariadb-root-password>"
+    mariadb_password: "<mariadb-pass>"
+    domain_name: "<domain-name>"
+
+  tasks:
+    - name: Remove existing GLPI repository if it exists
+      file:
+        path: "{{ deploy_dir }}"
+        state: absent
+
+    - name: Clone the GLPI repository
+      git:
+        repo: https://github.com/avirgos/deploy-glpi.git
+        dest: "{{ deploy_dir }}"
+        version: master
+        force: no
+
+    - name: Modify `secrets.env` file
+      shell: |
+        sed -i 's|<mariadb-root-password>|{{ mariadb_root_password }}|g' {{ deploy_dir }}/glpi/secrets.env
+        sed -i 's|<mariadb-glpi-password>|{{ mariadb_password }}|g' {{ deploy_dir }}/glpi/secrets.env
+
+    - name: Modify `frontend/vhost_glpi.conf` file
+      shell: |
+        sed -i 's|<domain-name>|{{ domain_name }}|g' {{ deploy_dir }}/glpi/frontend/vhost_glpi.conf
+
+    - name: Execute `deploy.sh`
+      become: true
+      shell: |
+        cd {{ deploy_dir }}/glpi && sudo ./deploy.sh
+```
+
+**⚠️ Complete the `<mariadb-root-password>`, `<mariadb-glpi-password>` and `<domain-name>` fields. ⚠️**
+
+### Deployment
+
+To deploy GLPI, run the following Ansible playbook :
+
+```bash
+ansible-playbook deploy_glpi.yml --ask-become-pass
+```
 
 ## Installation 
 
