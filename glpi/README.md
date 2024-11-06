@@ -156,6 +156,8 @@ To deploy GLPI, run the following Ansible playbook :
 ansible-playbook deploy_glpi.yml --ask-become-pass
 ```
 
+Finally, access GLPI via the URL : [https://localhost](https://localhost/).
+
 ## Installation 
 
 Please refer to the [installation guide](docs/INSTALL.md).
