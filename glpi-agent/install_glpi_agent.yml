@@ -1,3 +1,4 @@
+---
 - name: Install and configure the GLPI agent
   hosts: all
 

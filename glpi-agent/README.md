@@ -51,6 +51,7 @@ This Ansible playbook performs the following tasks :
 `install_glpi_agent.yml` :
 
 ```yml
+---
 - name: Install and configure the GLPI agent
   hosts: all
 

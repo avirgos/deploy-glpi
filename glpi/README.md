@@ -108,6 +108,7 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 `deploy_glpi.yml` :
 
 ```yml
+---
 - name: Deploy GLPI
   hosts: localhost
   become: true
