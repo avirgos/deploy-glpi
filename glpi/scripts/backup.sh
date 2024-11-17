@@ -47,8 +47,16 @@ then
     echo "Creating GLPI data backup..."
 
     # create GLPI data backup in docker container
-    docker exec glpi bash -c "cp -R "${GLPI_INSTALL_DIR}" /tmp/"${GLPI_BACKUP_DIR}""
+    docker exec glpi bash -c "mkdir -p /tmp/"${GLPI_BACKUP_DIR}"/config"
+    docker exec glpi bash -c "mkdir -p /tmp/"${GLPI_BACKUP_DIR}"/files"
+    docker exec glpi bash -c "mkdir -p /tmp/"${GLPI_BACKUP_DIR}"/marketplace"
+    docker exec glpi bash -c "mkdir -p /tmp/"${GLPI_BACKUP_DIR}"/plugins"
 
+    docker exec glpi bash -c "cp -R "${GLPI_INSTALL_DIR}/config" /tmp/"${GLPI_BACKUP_DIR}""
+    docker exec glpi bash -c "cp -R "${GLPI_INSTALL_DIR}/files" /tmp/"${GLPI_BACKUP_DIR}""
+    docker exec glpi bash -c "cp -R "${GLPI_INSTALL_DIR}/marketplace" /tmp/"${GLPI_BACKUP_DIR}""
+    docker exec glpi bash -c "cp -R "${GLPI_INSTALL_DIR}/plugins" /tmp/"${GLPI_BACKUP_DIR}""
+  
     # copy GLPI data backup to localhost
     docker cp glpi:/tmp/${GLPI_BACKUP_DIR} .
 

@@ -39,7 +39,7 @@ sudo ./scripts/backup.sh
 After running the script, in the `backups/` directory, you will find :
 
 - `db-backup-YYYY-MM-DD.sql` : backup file of the MariaDB database
-- `glpi-backup-YYYY-DD-MM` : directory containing the backup of GLPI data
+- `glpi-backup-YYYY-DD-MM` : directory containing the backup of GLPI data (`config/`, `files/`, `marketplace/` and `plugins/` directories)
 
 ```bash
 .
