@@ -28,6 +28,14 @@ To remove it, rerun the following script :
 sudo ./deploy.sh
 ```
 
+## Activate the inventory
+
+When a GLPI agent is added to a device, the device will be added to GLPI automatically.
+
+To do this, go to the "**Administration**" > "**Inventory**" menu. Then tick the "**Enable inventory**" box. Click on the "**Save**" button to apply the changes :
+
+![config-5](assets/config-5.png)
+
 ## Backup
 
 To backup the MariaDB database as well as GLPI data, run the following script **from the GLPI directory** :
@@ -47,10 +55,18 @@ After running the script, in the `backups/` directory, you will find :
 └── glpi-backup-YYYY-DD-MM
 ```
 
-## Activate the inventory
+## Update
 
-When a GLPI agent is added to a device, the device will be added to GLPI automatically.
+Example : upgrade from version **`10.0.16`** to **`10.0.17`**.
 
-To do this, go to the "**Administration**" > "**Inventory**" menu. Then tick the "**Enable inventory**" box. Click on the "**Save**" button to apply the changes :
+⚠️ In the Bash script `update.sh`, replace the variables below with the new version of GLPI (`NEW_GLPI_VERSION`) and the date of the last backup of GLPI data in the directory `backups/` (`GLPI_BACKUP_TIMESTAMP`) ⚠️ :
 
-![config-5](assets/config-5.png)
+![config-6](assets/config-6.png)
+
+To update GLPI, run the following script **from the `glpi` directory** :
+
+```sh
+sudo ./scripts/update.sh
+```
+
+GLPI should now be upgraded.

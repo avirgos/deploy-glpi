@@ -1,12 +1,13 @@
 # GLPI | Deployment Guide
 
+Current version : **`10.0.16`**.
+
 ## Prerequisites and comments
 
 The following packages are required : 
 - `git`
 - [`docker`](https://docs.docker.com/engine/install/)
 - [`docker-compose`](https://docs.docker.com/compose/install/linux/)
-
 
 ℹ️ **Inside the `ssl` directory**, you need `glpi.crt` and `glpi.key` files to establish an HTTPS connection for GLPI. The provided files are **self-signed**. 
 
@@ -105,7 +106,7 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 
 ## Automatic
 
-ℹ️ You don't need to clone the GitHub repository first, as the Ansible playbook will already be looking for it and will put it in `/opt/deploy-glpi`
+ℹ️ You don't need to clone the GitHub repository first, as the Ansible playbook will already be looking for it and will put it in `/opt/deploy-glpi`.
 
 `deploy_glpi.yml` :
 
