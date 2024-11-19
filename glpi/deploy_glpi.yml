@@ -10,6 +10,13 @@
     domain_name: "<domain-name>"
 
   tasks:
+    - name: Ensure required package is installed (`git`)
+      become: true
+      package:
+        name:
+          - git
+        state: present
+    
     - name: Remove existing GLPI repository if it exists
       file:
         path: "{{ deploy_dir }}"

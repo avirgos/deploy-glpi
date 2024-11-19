@@ -7,6 +7,14 @@
     glpi_server_url: "https://<domain-name>"
 
   tasks:
+    - name: Ensure required packages are installed (`curl` and `perl`)  
+      become: true
+      package:
+        name:
+          - curl
+          - perl
+        state: present
+  
     - name: Download the GLPI agent installation script
       command: "curl -L -o /tmp/glpi-agent-{{ glpi_agent_version }}-linux-installer.pl https://github.com/glpi-project/glpi-agent/releases/download/{{ glpi_agent_version }}/glpi-agent-{{ glpi_agent_version }}-linux-installer.pl"
 

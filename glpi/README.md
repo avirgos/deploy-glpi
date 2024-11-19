@@ -122,6 +122,13 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
     domain_name: "<domain-name>"
 
   tasks:
+    - name: Ensure required package is installed (`git`)
+      become: true
+      package:
+        name:
+          - git
+        state: present
+    
     - name: Remove existing GLPI repository if it exists
       file:
         path: "{{ deploy_dir }}"
@@ -156,8 +163,11 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 To deploy GLPI, run the following Ansible playbook :
 
 ```bash
-ansible-playbook deploy_glpi.yml --ask-become-pass
+ansible-playbook deploy_glpi.yml --ask-become-pass -v
 ```
+
+- `--ask-become-pass` : requests the password of the user running the Ansible playbook to obtain super-user privileges
+- `-v` : verbose mode
 
 Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 
