@@ -12,4 +12,4 @@ IFS=$'\n\t'     # Remove the initial space and instead use '\n'.
 source secrets.env
 
 # build the Docker images, stop any running containers, and start them up in detached mode
-docker-compose build && docker-compose down && docker-compose up -d
+docker compose build && docker compose down && docker compose up -d

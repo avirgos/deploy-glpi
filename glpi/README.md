@@ -4,7 +4,8 @@ Current version : **`10.0.16`**.
 
 ## Prerequisites and comments
 
-The following packages are required : 
+The following packages are required :
+- `sudo`
 - `git`
 - [`docker`](https://docs.docker.com/engine/install/)
 - [`docker-compose`](https://docs.docker.com/compose/install/linux/)
@@ -46,8 +47,8 @@ Here’s the structure of the `glpi` directory:
 │   └── glpi-setup.sh
 ├── secrets.env
 └── ssl
-    ├── glpi.crt
-    └── glpi.key
+  ├── glpi.crt
+  └── glpi.key
 ```
 
 ---
@@ -69,26 +70,24 @@ MARIADB_PASSWORD=<mariadb-glpi-password>
 
 ```nginx
 server {
-    listen 443 ssl;
-    server_name <domain-name>;
-    
-    root /var/www/glpi/public;
+  listen 443 ssl;
+  server_name <domain-name>;
+  
+  root /var/www/glpi/public;
 
-    ssl_certificate /etc/ssl/glpi.crt;     
-    ssl_certificate_key /etc/ssl/glpi.key;
-    
-    location / {
-        try_files $uri /index.php$is_args$args;
-    }
+  ssl_certificate /etc/ssl/glpi.crt;     
+  ssl_certificate_key /etc/ssl/glpi.key;
+  
+  location / {
+    try_files $uri /index.php$is_args$args;
+  }
 
-    location ~ ^/index\.php$ {
-        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
-        
+  location ~ ^/index\.php$ {
+    fastcgi_pass unix:/run/php/php8.2-fpm.sock;
     fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        include fastcgi_params;
-
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    }
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  }
 }
 ```
 
