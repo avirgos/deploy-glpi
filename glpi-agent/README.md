@@ -31,7 +31,7 @@ Copy the SSH key to the devices where the GLPI agent will be deployed :
 ssh-copy-id -i ~/.ssh/ansible.pub <username-1>@<ip-address-remote-host-1>
 ```
 
-**⚠️ Complete the `<username-1>` and `<ip-address-remote-host-x>` fields. ⚠️**
+**⚠️ Complete the `<username-x>` and `<ip-address-remote-host-x>` fields. ⚠️**
 
 ## Ansible Playbook
 
