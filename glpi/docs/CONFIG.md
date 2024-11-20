@@ -36,6 +36,22 @@ To do this, go to the "**Administration**" > "**Inventory**" menu. Then tick the
 
 ![config-5](assets/config-5.png)
 
+## Enable timezones
+
+By default, dates are in UTC format. You must manually activate the option to have several timezones.
+
+![config-6](assets/config-6.png)
+
+To enable timezones in GLPI, run the following script **from the GLPI directory** :
+
+```bash
+sudo ./scripts/enable-timezones.sh
+```
+
+You can now change the timezone by going to the "**Setup**" > "**General**" > "**Default values**" :
+
+![config-7](assets/config-7.png)
+
 ## Backup
 
 To backup the MariaDB database as well as GLPI data, run the following script **from the GLPI directory** :
@@ -61,7 +77,7 @@ Example : upgrade from version **`10.0.16`** to **`10.0.17`**.
 
 ⚠️ In the Bash script `update.sh`, replace the variables below with the new version of GLPI (`NEW_GLPI_VERSION`) and the date of the last backup of GLPI data in the directory `backups/` (`GLPI_BACKUP_TIMESTAMP`) ⚠️ :
 
-![config-6](assets/config-6.png)
+![config-8](assets/config-8.png)
 
 To update GLPI, run the following script **from the `glpi` directory** :
 
