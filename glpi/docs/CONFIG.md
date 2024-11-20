@@ -48,7 +48,7 @@ To enable timezones in GLPI, run the following script **from the GLPI directory*
 sudo ./scripts/enable-timezones.sh
 ```
 
-You can now change the timezone by going to the "**Setup**" > "**General**" > "**Default values**" :
+You can now change the timezone by going to the "**Setup**" > "**General**" > "**Default values**" menu :
 
 ![config-7](assets/config-7.png)
 
