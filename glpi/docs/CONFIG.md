@@ -42,7 +42,7 @@ By default, dates are in UTC format. You must manually activate the option to ha
 
 ![config-6](assets/config-6.png)
 
-To enable timezones in GLPI, run the following script **from the GLPI directory** :
+To enable timezones in GLPI, run the following script **from the `glpi` directory** :
 
 ```bash
 sudo ./scripts/enable-timezones.sh
