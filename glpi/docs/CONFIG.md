@@ -8,7 +8,7 @@ Log in with the administrator account `glpi/glpi` :
 
 ### Security Warnings
 
-Upon accessing the admin interface, you may see a security warning recommending you change the passwords for the `glpi`, `post-only`, `tech` and `normal` accounts :
+Upon accessing the admin interface, you will see a security warning recommending you change the passwords for the `glpi`, `post-only`, `tech` and `normal` accounts :
 
 ![config-2.png](assets/config-2.png)
 
