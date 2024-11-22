@@ -66,7 +66,7 @@ MARIADB_PASSWORD=<mariadb-glpi-password>
 
 ---
 
-**Inside the `frontend` directory**, a configuration file `vhost_glpi.conf`, necessary for the `nginx` web server, can be found : 
+**Inside the `frontend` directory**, a configuration file `vhost_glpi.conf` is necessary for the `nginx` web server : 
 
 ```nginx
 server {
