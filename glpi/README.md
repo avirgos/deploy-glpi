@@ -107,7 +107,7 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 
 ℹ️ You don't need to clone the GitHub repository first, as the Ansible playbook will already be looking for it and will put it in `/opt/deploy-glpi`.
 
-`deploy_glpi.yml` :
+`deploy-glpi.yml` :
 
 ```yml
 ---
@@ -163,7 +163,7 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 To deploy GLPI, run the following Ansible playbook :
 
 ```bash
-ansible-playbook deploy_glpi.yml --ask-become-pass -v
+ansible-playbook deploy-glpi.yml --ask-become-pass -v
 ```
 
 - `--ask-become-pass` : requests the password of the user running the Ansible playbook to obtain super-user privileges

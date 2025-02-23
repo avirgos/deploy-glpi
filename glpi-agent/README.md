@@ -25,7 +25,7 @@ ssh-copy-id -i ~/.ssh/ansible.pub <username-1>@<ip-address-remote-host-1>
 
 ## Ansible Playbook
 
-The Ansible playbook `install_glpi_agent.yml` has two variables to configure :
+The Ansible playbook `install-glpi-agent.yml` has two variables to configure :
 
 - the **version** of the GLPI agent
 - the **URL** of the GLPI server
@@ -39,7 +39,7 @@ This Ansible playbook performs the following tasks :
     - no SSL certificate check due to self-signing. Remove the `--no-ssl-check` option if not needed
 - Start and enable the GLPI agent
 
-`install_glpi_agent.yml` :
+`install-glpi-agent.yml` :
 
 ```yml
 ---
@@ -98,7 +98,7 @@ This Ansible playbook performs the following tasks :
 To deploy the GLPI agent, run the following Ansible playbook :
 
 ```bash
-ansible-playbook -i inventory.ini install_glpi_agent.yml --ask-become-pass -v
+ansible-playbook -i inventory.ini install-glpi-agent.yml --ask-become-pass -v
 ```
 
 - `--ask-become-pass` : requests for `<username-x>` password to obtain super-user privileges
