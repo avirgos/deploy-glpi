@@ -18,10 +18,10 @@ ssh-keygen -t ecdsa -b 521 -f ~/.ssh/ansible
 Copy the SSH key to the devices where the GLPI agent will be deployed :
 
 ```bash
-ssh-copy-id -i ~/.ssh/ansible.pub <username-1>@<ip-address-remote-host-1>
+ssh-copy-id -i ~/.ssh/ansible.pub <username-1>@<remote-host-1>
 ```
 
-**⚠️ Complete the `<username-x>` and `<ip-address-remote-host-x>` fields. Also, `<username-x>` must belong to the `sudo` group. ⚠️**
+**⚠️ Complete the `<username-x>` and `<remote-host-x>` fields. Also, `<username-x>` must belong to the `sudo` group. ⚠️**
 
 ## Ansible Playbook
 
@@ -91,7 +91,7 @@ This Ansible playbook performs the following tasks :
 <alias-2> ansible_host=<hostname-2> ansible_user=<username-2> ansible_ssh_private_key_file=~/.ssh/ansible
 ```
 
-**⚠️ Complete the `<alias-x>`, `<ip-address-x>`, and `<username-x>` fields. ⚠️**
+**⚠️ Complete the `<alias-x>`, `<hostname-x>`, and `<username-x>` fields. ⚠️**
 
 ## Deployment
 
