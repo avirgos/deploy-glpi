@@ -7,7 +7,7 @@ A GLPI server. See [`glpi`](../glpi) for installation and configuration.
 The following package is required on *managed nodes* :
 - `sudo`
 
-## Deployment Preparation
+## Deployment preparation
 
 Create a SSH key `ansible` to allow SSH connections to the devices :
 
@@ -23,7 +23,7 @@ ssh-copy-id -i ~/.ssh/ansible.pub <username-1>@<remote-host-1>
 
 **⚠️ Complete the `<username-x>` and `<remote-host-x>` fields. Also, `<username-x>` must belong to the `sudo` group. ⚠️**
 
-## Ansible Playbook
+## Ansible playbook
 
 The Ansible playbook `install-glpi-agent.yml` has two variables to configure :
 

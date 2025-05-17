@@ -28,7 +28,7 @@ Choose your deployment method :
 
 ## Manual
 
-### Deployment Preparation
+### Deployment preparation
 
 Retrieve the necessary files for deploying GLPI cloning this repository :
 
