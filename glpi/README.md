@@ -18,7 +18,7 @@ You can generate and self-sign the SSL certificate with the following command:
 openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout ./glpi.key -out ./glpi.crt -subj "/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local" 
 ```
 
-Replace the relevant fields : `"/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local"`
+Replace the relevant fields: `"/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local"`
 
 ## Navigation
 
@@ -101,7 +101,7 @@ To deploy GLPI, run the following script:
 sudo ./deploy.sh
 ```
 
-Finally, access GLPI via the URL : [https://localhost](https://localhost/).
+Finally, access GLPI via the URL: https://localhost
 
 ## Automatic
 
@@ -166,10 +166,10 @@ To deploy GLPI, run the following Ansible playbook:
 ansible-playbook deploy-glpi.yml --ask-become-pass -v
 ```
 
-- `--ask-become-pass` : requests the password of the user running the Ansible playbook to obtain super-user privileges
-- `-v` : verbose mode
+- `--ask-become-pass`: requests the password of the user running the Ansible playbook to obtain super-user privileges
+- `-v`: verbose mode
 
-Finally, access GLPI via the URL : [https://localhost](https://localhost/).
+Finally, access GLPI via the URL: https://localhost
 
 ## Installation 
 
