@@ -22,7 +22,7 @@ GLPI_BACKUP_DIR="/var/www/glpi-backup-"${GLPI_BACKUP_TIMESTAMP}""
 # update and install dependencies
 apt-get update && apt-get install -y wget tar nginx php"${PHP_VERSION}" php"${PHP_VERSION}"-fpm php"${PHP_VERSION}"-mysql php"${PHP_VERSION}"-xml php"${PHP_VERSION}"-mbstring php"${PHP_VERSION}"-curl php"${PHP_VERSION}"-intl php"${PHP_VERSION}"-gd php"${PHP_VERSION}"-ldap php"${PHP_VERSION}"-phar php"${PHP_VERSION}"-bz2 php"${PHP_VERSION}"-zip
 
-# php.ini
+# `php.ini`
 sed -i "s/^;session.cookie_secure =/session.cookie_secure = On/" /etc/php/"${PHP_VERSION}"/fpm/php.ini
 sed -i "s/^session.cookie_httponly =/session.cookie_httponly = On/" /etc/php/"${PHP_VERSION}"/fpm/php.ini
 sed -i "s/^session.cookie_samesite =/session.cookie_samesite = Lax/" /etc/php/"${PHP_VERSION}"/fpm/php.ini 
@@ -64,16 +64,16 @@ then
     tar -xvf glpi-"${GLPI_VERSION}".tgz -C /var/www
 # check for GLPI update
 else
-    # check if GLPI directory has exactly 4 subdirectories and config_db.php exists
+    # check if GLPI directory has exactly "4" subdirectories and `config_db.php` exists
     if [ "$(find "${GLPI_BACKUP_DIR}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)" -eq 4 ] && [ -f ""${GLPI_INSTALL_DIR}"/config/config_db.php" ]
     then
         update_glpi
     fi
 
-    # remove install.php if it exists
-    if [ -f "${GLPI_INSTALL_DIR}/install/install.php" ]
+    # remove `install.php` if it exists
+    if [ -f ""${GLPI_INSTALL_DIR}"/install/install.php" ]
     then
-        rm "${GLPI_INSTALL_DIR}/install/install.php"
+        rm ""${GLPI_INSTALL_DIR}"/install/install.php"
     fi
 fi
 

@@ -17,7 +17,7 @@ MARIADB_ROOT_PASSWORD=$(grep 'MARIADB_ROOT_PASSWORD' secrets.env | cut -d'=' -f2
 GLPI_USER=$(grep 'MARIADB_USER' secrets.env | cut -d'=' -f2)
 GLPI_DB=$(grep 'MARIADB_DATABASE' secrets.env | cut -d'=' -f2)
 
-# configure privileges for GLPI_USER
+# configure privileges for `GLPI_USER`
 docker exec -i "${GLPI_MARIADB_CONTAINER}" mariadb -u root -p"${MARIADB_ROOT_PASSWORD}" <<EOF
 USE "${GLPI_DB}";
 GRANT SELECT ON mysql.time_zone_name TO '${GLPI_USER}'@'%';
