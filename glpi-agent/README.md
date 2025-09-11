@@ -4,18 +4,18 @@
 
 A GLPI server. See [`glpi`](../glpi) for installation and configuration.
 
-The following package is required on *managed nodes* :
+The following package is required on *managed nodes*:
 - `sudo`
 
 ## Deployment preparation
 
-Create a SSH key `ansible` to allow SSH connections to the devices :
+Create a SSH key `ansible` to allow SSH connections to the devices:
 
 ```bash
 ssh-keygen -t ecdsa -b 521 -f ~/.ssh/ansible
 ```
 
-Copy the SSH key to the devices where the GLPI agent will be deployed :
+Copy the SSH key to the devices where the GLPI agent will be deployed:
 
 ```bash
 ssh-copy-id -i ~/.ssh/ansible.pub <username-1>@<remote-host-1>
@@ -25,12 +25,12 @@ ssh-copy-id -i ~/.ssh/ansible.pub <username-1>@<remote-host-1>
 
 ## Ansible playbook
 
-The Ansible playbook `install-glpi-agent.yml` has two variables to configure :
+The Ansible playbook `install-glpi-agent.yml` has two variables to configure:
 
 - the **version** of the GLPI agent
 - the **URL** of the GLPI server
 
-This Ansible playbook performs the following tasks :
+This Ansible playbook performs the following tasks:
 - Install `curl` and `perl` packages
 - Download the GLPI agent installation script
 - Set execution permissions on the installation script
@@ -39,7 +39,7 @@ This Ansible playbook performs the following tasks :
     - no SSL certificate check due to self-signing. Remove the `--no-ssl-check` option if not needed
 - Start and enable the GLPI agent
 
-`install-glpi-agent.yml` :
+`install-glpi-agent.yml`:
 
 ```yml
 ---
@@ -83,7 +83,7 @@ This Ansible playbook performs the following tasks :
 
 ---
 
-`inventory.ini` lists the devices where the GLPI agent will be deployed :
+`inventory.ini` lists the devices where the GLPI agent will be deployed:
 
 ```ini
 [glpi_agents]
@@ -95,7 +95,7 @@ This Ansible playbook performs the following tasks :
 
 ## Deployment
 
-To deploy the GLPI agent, run the following Ansible playbook :
+To deploy the GLPI agent, run the following Ansible playbook:
 
 ```bash
 ansible-playbook -i inventory.ini install-glpi-agent.yml --ask-become-pass -v
@@ -104,10 +104,10 @@ ansible-playbook -i inventory.ini install-glpi-agent.yml --ask-become-pass -v
 - `--ask-become-pass` : requests for `<username-x>` password to obtain super-user privileges
 - `-v` : verbose mode
 
-On the GLPI server, after running the playbook, you should see your GLPI agent(s) deployed on your device(s) by accessing the "**Administration**" > "**Inventory**" > "**Agents**" menu :
+On the GLPI server, after running the playbook, you should see your GLPI agent(s) deployed on your device(s) by accessing the "**Administration**" > "**Inventory**" > "**Agents**" menu:
 
 ![agent](assets/agent.png)
 
-You should also see the data for the device by accessing the "**Assets**" > "**Computers**" menu :
+You should also see the data for the device by accessing the "**Assets**" > "**Computers**" menu:
 
 ![result](assets/result.png)

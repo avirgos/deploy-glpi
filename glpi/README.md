@@ -4,7 +4,7 @@ Current version : **`10.0.16`**.
 
 ## Prerequisites and comments
 
-The following packages are required :
+The following packages are required:
 - `sudo`
 - `git`
 - [`docker`](https://docs.docker.com/engine/install/)
@@ -12,7 +12,7 @@ The following packages are required :
 
 ℹ️ **Inside the `ssl` directory**, you need `glpi.crt` and `glpi.key` files to establish an HTTPS connection for GLPI. The provided files are **self-signed**. 
 
-You can generate and self-sign the SSL certificate with the following command :
+You can generate and self-sign the SSL certificate with the following command:
 
 ```bash
 openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout ./glpi.key -out ./glpi.crt -subj "/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local" 
@@ -22,7 +22,7 @@ Replace the relevant fields : `"/C=FR/ST=France/L=Lyon/O=OrgVirgos/CN=glpi.local
 
 ## Navigation
 
-Choose your deployment method :
+Choose your deployment method:
 - [Manual](#manual)
 - [Automatic](#automatic)
 
@@ -30,7 +30,7 @@ Choose your deployment method :
 
 ### Deployment preparation
 
-Retrieve the necessary files for deploying GLPI cloning this repository :
+Retrieve the necessary files for deploying GLPI cloning this repository:
 
 ```bash
 git clone https://github.com/avirgos/deploy-glpi.git
@@ -53,7 +53,7 @@ Here’s the structure of the `glpi` directory:
 
 ---
 
-`secrets.env` contains the credentials used in `docker-compose.yml` :
+`secrets.env` contains the credentials used in `docker-compose.yml`:
 
 ```bash
 MARIADB_ROOT_PASSWORD=<mariadb-root-password>
@@ -66,7 +66,7 @@ MARIADB_PASSWORD=<mariadb-glpi-password>
 
 ---
 
-**Inside the `frontend` directory**, a configuration file `vhost_glpi.conf` is necessary for the `nginx` web server : 
+**Inside the `frontend` directory**, a configuration file `vhost_glpi.conf` is necessary for the `nginx` web server: 
 
 ```nginx
 server {
@@ -95,7 +95,7 @@ server {
 
 ### Deployment
 
-To deploy GLPI, run the following script :
+To deploy GLPI, run the following script:
 
 ```bash
 sudo ./deploy.sh
@@ -107,7 +107,7 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 
 ℹ️ You don't need to clone the GitHub repository first, as the Ansible playbook will already be looking for it and will put it in `/opt/deploy-glpi`.
 
-`deploy-glpi.yml` :
+`deploy-glpi.yml`:
 
 ```yml
 ---
@@ -160,7 +160,7 @@ Finally, access GLPI via the URL : [https://localhost](https://localhost/).
 
 ### Deployment
 
-To deploy GLPI, run the following Ansible playbook :
+To deploy GLPI, run the following Ansible playbook:
 
 ```bash
 ansible-playbook deploy-glpi.yml --ask-become-pass -v
