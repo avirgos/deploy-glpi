@@ -10,7 +10,7 @@ The following packages are required:
 - [`docker`](https://docs.docker.com/engine/install/)
 - [`docker-compose`](https://docs.docker.com/compose/install/linux/)
 
-> ℹ️ **Note**  
+> **ℹ️ Note**  
 > **Inside the `ssl` directory**, you need `glpi.crt` and `glpi.key` files to establish an HTTPS connection for GLPI. The provided files are **self-signed**. 
 
 You can generate and self-sign the SSL certificate with the following command:
