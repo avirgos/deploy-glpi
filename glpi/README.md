@@ -10,7 +10,8 @@ The following packages are required:
 - [`docker`](https://docs.docker.com/engine/install/)
 - [`docker-compose`](https://docs.docker.com/compose/install/linux/)
 
-ℹ️ **Inside the `ssl` directory**, you need `glpi.crt` and `glpi.key` files to establish an HTTPS connection for GLPI. The provided files are **self-signed**. 
+> ℹ️ **Note**  
+> **Inside the `ssl` directory**, you need `glpi.crt` and `glpi.key` files to establish an HTTPS connection for GLPI. The provided files are **self-signed**. 
 
 You can generate and self-sign the SSL certificate with the following command:
 
@@ -62,7 +63,8 @@ MARIADB_USER=glpi-user
 MARIADB_PASSWORD=<mariadb-glpi-password>
 ```
 
-**⚠️ Complete the `<mariadb-root-password>` and `<mariadb-glpi-password>` fields. ⚠️**
+> **⚠️ Warning**  
+> Complete the `<mariadb-root-password>` and `<mariadb-glpi-password>` fields.
 
 ---
 
@@ -91,7 +93,8 @@ server {
 }
 ```
 
-**⚠️ Complete the `<domain-name>` field. ⚠️**
+> **⚠️ Warning**  
+> Complete the `<domain-name>` field.
 
 ### Deployment
 
@@ -105,7 +108,8 @@ Finally, access GLPI via the URL: https://localhost
 
 ## Automatic
 
-ℹ️ You don't need to clone the GitHub repository first, as the Ansible playbook will already be looking for it and will put it in `/opt/deploy-glpi`.
+> **ℹ️ Note**  
+> You don't need to clone the GitHub repository first, as the Ansible playbook will already be looking for it and will put it in `/opt/deploy-glpi`.
 
 `deploy-glpi.yml`:
 
@@ -156,7 +160,8 @@ Finally, access GLPI via the URL: https://localhost
         cd {{ deploy_dir }}/glpi && sudo ./deploy.sh
 ```
 
-**⚠️ Complete the `<mariadb-root-password>`, `<mariadb-glpi-password>` and `<domain-name>` fields. ⚠️**
+> **⚠️ Warning**  
+> Complete the `<mariadb-root-password>`, `<mariadb-glpi-password>` and `<domain-name>` fields.
 
 ### Deployment
 
