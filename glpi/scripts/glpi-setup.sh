@@ -40,13 +40,12 @@ apt-get update && apt-get install -y
     php"${PHP_VERSION}"-zip
 
 ###############################################################################
-# Configure PHP (`php.ini`)
+# Configure PHP ('php.ini')
 ###############################################################################
 sed -i "s/^;session.cookie_secure =/session.cookie_secure = On/" /etc/php/"${PHP_VERSION}"/fpm/php.ini
 sed -i "s/^session.cookie_httponly =/session.cookie_httponly = On/" /etc/php/"${PHP_VERSION}"/fpm/php.ini
 sed -i "s/^session.cookie_samesite =/session.cookie_samesite = Lax/" /etc/php/"${PHP_VERSION}"/fpm/php.ini 
 
-#
 function update_glpi() {
     # Purge previous GLPI
     cd "${GLPI_INSTALL_DIR}"
@@ -86,13 +85,13 @@ then
     tar -xvf glpi-"${GLPI_VERSION}".tgz -C /var/www
 # Check for GLPI update
 else
-    # Check if GLPI directory has exactly "4" subdirectories and `config_db.php` exists
+    # Check if GLPI directory has exactly "4" subdirectories and 'config_db.php' exists
     if [ "$(find "${GLPI_BACKUP_DIR}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)" -eq 4 ] && [ -f ""${GLPI_INSTALL_DIR}"/config/config_db.php" ]
     then
         update_glpi
     fi
 
-    # Remove `install.php` if it exists
+    # Remove 'install.php' if it exists
     if [ -f ""${GLPI_INSTALL_DIR}"/install/install.php" ]
     then
         rm ""${GLPI_INSTALL_DIR}"/install/install.php"

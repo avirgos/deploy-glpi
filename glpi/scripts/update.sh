@@ -24,7 +24,7 @@ GLPI_SETUP_SCRIPT="./scripts/glpi-setup.sh"
 # Backup MariaDB + GLPI data
 ./scripts/backup.sh
 
-# Backup `docker-compose.yml`
+# Backup 'docker-compose.yml'
 cp docker-compose.yml docker-compose.yml.bak
 
 ######################################################################
@@ -42,13 +42,13 @@ cp docker-compose.yml docker-compose.yml.bak
 } && mv docker-compose.yml.tmp docker-compose.yml
 
 ######################################################################
-# Modify `GLPI_VERSION` and `TIMESTAMP` variables in `scripts/glpi-setup.sh`
+# Modify 'GLPI_VERSION' and 'TIMESTAMP' variables in 'scripts/glpi-setup.sh'
 ######################################################################
 sed -i "s|^GLPI_VERSION=.*|GLPI_VERSION=\"${NEW_GLPI_VERSION}\"|" "${GLPI_SETUP_SCRIPT}"
 sed -i "s|^GLPI_BACKUP_TIMESTAMP=.*|GLPI_BACKUP_TIMESTAMP=\"${GLPI_BACKUP_TIMESTAMP}\"|" "${GLPI_SETUP_SCRIPT}"
 
-# Run `deploy.sh`
+# Run 'deploy.sh'
 ./deploy.sh
 
-# Restore original `docker-compose.yml`
+# Restore original 'docker-compose.yml'
 mv docker-compose.yml.bak docker-compose.yml

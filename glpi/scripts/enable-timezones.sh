@@ -18,7 +18,7 @@ GLPI_USER=$(grep 'MARIADB_USER' secrets.env | cut -d'=' -f2)
 GLPI_DB=$(grep 'MARIADB_DATABASE' secrets.env | cut -d'=' -f2)
 
 ######################################################################
-# Configure privileges for `GLPI_USER`
+# Configure privileges for 'GLPI_USER'
 ######################################################################
 docker exec -i "${GLPI_MARIADB_CONTAINER}" mariadb -u root -p"${MARIADB_ROOT_PASSWORD}" <<EOF
 USE "${GLPI_DB}";
