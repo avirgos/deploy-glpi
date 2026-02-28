@@ -4,41 +4,38 @@
   become: true
 
   vars:
-    deploy_dir: /opt/deploy-glpi
-    mariadb_root_password: "<mariadb-root-password>"
-    mariadb_password: "<mariadb-pass>"
-    domain_name: "<domain-name>"
+    deploy_dir: '/opt/deploy-glpi'
+    mariadb_root_password: '<mariadb-root-password>'
+    mariadb_password: '<mariadb-pass>'
+    domain_name: '<domain-name>'
 
   tasks:
-    - name: Ensure required package is installed (`git`)
-      become: true
-      package:
-        name:
-          - git
+    - name: Ensure required package is installed ('git')
+      ansible.builtin.package:
+        name: git
         state: present
     
     - name: Remove existing GLPI repository if it exists
-      file:
+      ansible.builtin.file:
         path: "{{ deploy_dir }}"
         state: absent
 
     - name: Clone the GLPI repository
-      git:
-        repo: https://github.com/avirgos/deploy-glpi.git
+      ansible.builtin.git:
+        repo: "https://github.com/avirgos/deploy-glpi.git"
         dest: "{{ deploy_dir }}"
         version: master
         force: no
 
-    - name: Modify `secrets.env` file
-      shell: |
+    - name: Modify 'secrets.env' file
+      ansible.builtin.shell: |
         sed -i 's|<mariadb-root-password>|{{ mariadb_root_password }}|g' {{ deploy_dir }}/glpi/secrets.env
         sed -i 's|<mariadb-glpi-password>|{{ mariadb_password }}|g' {{ deploy_dir }}/glpi/secrets.env
 
-    - name: Modify `frontend/vhost_glpi.conf` file
-      shell: |
+    - name: Modify 'frontend/vhost_glpi.conf' file
+      ansible.builtin.shell: |
         sed -i 's|<domain-name>|{{ domain_name }}|g' {{ deploy_dir }}/glpi/frontend/vhost_glpi.conf
 
-    - name: Execute `deploy.sh`
-      become: true
-      shell: |
+    - name: Execute 'deploy.sh'
+      ansible.builtin.shell: |
         cd {{ deploy_dir }}/glpi && sudo ./deploy.sh

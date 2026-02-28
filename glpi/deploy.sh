@@ -8,7 +8,7 @@ set -o pipefail # Exit if pipe failed.
 set -o nounset  # Exit if variable not set.
 IFS=$'\n\t'     # Remove the initial space and instead use '\n'.
 
-# Load environment variables from `secrets.env` file
+# Load environment variables from 'secrets.env' file
 source secrets.env
 
 # Build the Docker images, stop any running containers, and start them up in detached mode
